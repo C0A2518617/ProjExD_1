@@ -13,7 +13,7 @@ def main():
     tut_bird_tx = pg.image.load("fig/3.png")
     tut_bird_rect = tut_bird_tx.get_rect() #練習10.1
     tut_bird_rect.center = 300,200 #練習10.2
-    tmr = 0
+    tmr = 0;movx=0;movy=0
     while True:
         for event in pg.event.get():
             if event.type == pg.QUIT: return
@@ -28,14 +28,15 @@ def main():
         clock.tick(200)
         key_lst = pg.key.get_pressed() #練習10.3
         if key_lst[pg.K_UP]:
-            tut_bird_rect.move_ip((0,-1))
+            movx += 0; movy += -1
         if key_lst[pg.K_DOWN]:
-            tut_bird_rect.move_ip((0,1))
+            movx += 0; movy += 1
         if key_lst[pg.K_LEFT]:
-            tut_bird_rect.move_ip((-1,0))
+            movx += -1; movy += 0
         if key_lst[pg.K_RIGHT]:
-            tut_bird_rect.move_ip((2,0)) #右に移動
-        tut_bird_rect.move_ip(-1,0) #移動
+            movx += 2; movy += 0
+        tut_bird_rect.move_ip(-1+movx,0+movy) #移動
+        movx = 0; movy = 0
 
 
 if __name__ == "__main__":
