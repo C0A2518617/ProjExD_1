@@ -16,12 +16,14 @@ def main():
     while True:
         for event in pg.event.get():
             if event.type == pg.QUIT: return
-        screen.blit(bg_img, [bg_x, 0]) 
-        screen.blit(pg.transform.flip(bg_img,1,0),[bg_x+1600,0])
+        x = tmr%1600
+        screen.blit(bg_img, [-x, 0]) 
+        screen.blit(pg.transform.flip(bg_img,1,0),[-x+1600,0])
+        screen.blit(pg.transform.flip(bg_img,1,0),[-x+3200,0])
         screen.blit(pg.transform.flip(tut_bird_tx,1,0),[300,200])
         pg.display.update()
         tmr += 1        
-        bg_x -= 1
+        x += 1
         clock.tick(200)
 
 
