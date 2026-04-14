@@ -12,14 +12,16 @@ def main():
     bg_img = pg.image.load("fig/pg_bg.jpg")
     tut_bird_tx = pg.image.load("fig/3.png")
     tmr = 0
+    bg_x = 0
     while True:
         for event in pg.event.get():
             if event.type == pg.QUIT: return
-        screen.blit(bg_img, [0, 0])
+        screen.blit(bg_img, [bg_x, 0])
         screen.blit(pg.transform.flip(tut_bird_tx,1,0),[300,200])
         pg.display.update()
         tmr += 1        
-        clock.tick(10)
+        bg_x -= 1
+        clock.tick(200)
 
 
 if __name__ == "__main__":
